@@ -41,13 +41,6 @@ export const productAPI = {
   delete: (id) => api.delete(`/api/product/deleteProduct?id=${id}`),
 };
 
-// Cart API
-export const cartAPI = {
-  show: (cartId) => api.get(`/api/cart/showCart/${cartId}`),
-  add: (cartId, productId) => api.post(`/api/cart/addToCart/${cartId}/${productId}`),
-  remove: (cartId, productId) => api.delete(`/api/cart/removeFromCart/${cartId}/${productId}`),
-  clear: (cartId) => api.delete(`/api/cart/clearCart/${cartId}`),
-};
 
 // Order API
 export const orderAPI = {
@@ -55,5 +48,12 @@ export const orderAPI = {
   getById: (id) => api.get(`/api/order/findById?id=${id}`),
   getAll: () => api.get('/api/order/findAll'),
 };
-
+// Cart API
+export const cartAPI = {
+  show: (cartId) => api.get(`/api/cart/showCart/${cartId}`),
+  add: (cartId, productId) => api.post(`/api/cart/addToCart/${cartId}/${productId}`),
+  remove: (cartId, productId) => api.delete(`/api/cart/removeFromCart/${cartId}/${productId}`),
+  clear: (cartId) => api.delete(`/api/cart/clearCart/${cartId}`),
+  calculate: (cartId) => api.get(`/api/cart/calculate/${cartId}`),  // ← Добавь это
+};
 export default api;

@@ -47,6 +47,7 @@ export const cartAPI = {
   add: (cartId, productId) => api.post(`/api/cart/addToCart/${cartId}/${productId}`),
   remove: (cartId, productId) => api.delete(`/api/cart/removeFromCart/${cartId}/${productId}`),
   clear: (cartId) => api.delete(`/api/cart/clearCart/${cartId}`),
+  calculate: (cartId) => api.get(`/api/cart/calculate/${cartId}`),  // ← Добавь это
 };
 
 // Order API
