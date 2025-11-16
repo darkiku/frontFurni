@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const API_BASE_URL = 'https://sdpfinalfurni-production.up.railway.app';
 
-
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -38,8 +37,9 @@ export const productAPI = {
   getAll: () => api.get('/api/product/allProducts'),
   getById: (id) => api.get(`/api/product/product/${id}`),
   add: (product) => api.post('/api/product/addProduct', product),
+  createCustom: (product) => api.post('/api/product/createCustom', product),
   update: (product) => api.put('/api/product/updateProduct', product),
-  delete: (id) => api.delete(`/api/product/deleteProduct?id=${id}`),
+  delete: (id) => api.delete(`/api/product/deleteProduct/${id}`),
 };
 
 // Cart API
@@ -48,7 +48,8 @@ export const cartAPI = {
   add: (cartId, productId) => api.post(`/api/cart/addToCart/${cartId}/${productId}`),
   remove: (cartId, productId) => api.delete(`/api/cart/removeFromCart/${cartId}/${productId}`),
   clear: (cartId) => api.delete(`/api/cart/clearCart/${cartId}`),
-  calculate: (cartId) => api.get(`/api/cart/calculate/${cartId}`),  // ← Добавь это
+  calculate: (cartId) => api.get(`/api/cart/calculate/${cartId}`),
+  applyDiscount: (cartId, type, value) => api.post(`/api/cart/applyDiscount/${cartId}?type=${type}&value=${value}`),
 };
 
 // Order API
